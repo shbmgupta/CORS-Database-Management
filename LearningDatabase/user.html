@@ -1,0 +1,283 @@
+<html>
+<head>
+	<title>
+		{{user_name}}  
+	</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<style>
+	body{
+		background: #f6e4e4;
+		}
+		.d1{
+			width: 100%;
+		}
+		h1{
+			font-family:'Josefin Sans', sans-serif !important;
+		}
+		h2{
+			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		}
+		hr {
+		    display: block;
+		    height: 1px;
+		    border: 0;
+		    border-top: 1px solid #add8e6;
+		    margin: 1em 0;
+		    padding: 0; 
+		}
+		.hclass{
+			display: block;
+		    height: 1px;
+		    border: 0;
+		    border-top: 1px solid #ccc;
+		    margin: 0em 0;
+		    padding: 0;
+		}
+		.search{
+			z-index: 5;
+			background: white;
+			width: 100%;
+			position: fixed;
+		}
+		.search input[type=text] {
+			left: 18%;
+		  	width: 60%;
+			padding: 9px;
+			margin-top: 8px;
+			margin-right: 16px;
+			margin-left: 16px;
+			margin-bottom: 8px;
+
+			outline-color: #00506b;
+			font-size: 20px;
+		}
+		.content{
+			padding-top:20px;
+			color: white;
+			font-size: 30px;
+			text-align: left;
+			padding-bottom: 20px;
+			background-color:#00506b;
+		}
+		.wrap{
+			background: #f6e4e4;
+			
+			margin: 0 auto;
+			padding-left: 10%;
+			padding-right: 2%;
+			padding-top: 30px;
+			width: 100%;
+		}
+		.one{
+			display: inline-block;
+			margin: 0 15px 0 0;
+			background: white;
+			vertical-align: top;
+			width: 60%;
+		}
+		.two{
+			display: inline-block;
+			vertical-align: top;
+			border: 1px solid #add8e6;
+			padding: 20px;
+			background: #dbf3ff;
+			width: 30%;
+			font-size: 18px
+		}
+		.three1{
+			width: 100%;
+			padding: 40px;
+			padding-bottom: 20px;
+			padding-top: 20px;
+			background: white;
+			font-size: 20px;
+			border: 1px solid #ccc;
+		}
+		.mousePoint:hover{
+			cursor: pointer;
+		}
+		.three{
+			width: 100%;
+			padding: 0px;
+			border: 1px solid #ccc !important;
+			min-height: 70px !important;
+		}
+		.desc{
+			width: 85%;
+			display: inline-block;
+			vertical-align: middle;
+			padding: 20px;
+			font-size: 20px;
+		}
+		.source{
+			height: 40px;
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.site{
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 15px;
+		}
+		.categories{
+			display: inline-block;
+			height: 25px;
+			vertical-align: middle;
+			text-align: center;
+			background: #add8e6;
+			border-radius: 25px;
+			padding-left: 10px;
+			padding-top: 2px;
+			padding-right: 10px;
+			font-size: 15px;
+		}
+		.upvotes{
+			width: 12%;
+			display: inline-block;
+			vertical-align: middle;
+			border: 1px solid #000;
+			height: 70px;
+			font-family:'Josefin Sans', sans-serif;
+			padding: 10px;
+			text-align: center;
+			font-size: 40px;
+		}
+		.tagsList{
+			position: relative;
+			display: inline-block;
+		}
+		.detailed_info{
+			padding-left: 10%;
+			padding-right: 2%;
+			padding-top: 30px;
+			padding-bottom: 3%;
+			width: 100%;
+			font-size: 16px;
+		}
+		.hom{
+        	text-decoration: none;
+        	text-decoration-color: none;
+        	color:inherit;
+        }
+        .hom:hover{
+        	text-decoration: none;
+        	text-decoration-color: none;
+			color: inherit;
+        }
+        .test{
+        	display:inline-block;
+
+        }
+	</style>
+	
+</head>
+<body>
+
+	<div class="search">
+			<h1 ><a class='hom' href='index.php'><div><b style="color: #00506b;"><span style="padding-left:15%">></span></b><b><u style="text-decoration: underline; text-decoration-color: #00506b; ">C</u></b>orS <input type="text" placeholder="Search for the topic you want to learn..." onkeyup="find()" id="searchbox"></div></a></h1>	
+		</div>
+	<br><br><br><br>
+	<div align="center" class="content">
+			<div style="width:80%;">
+				<span style="padding-left:12%">{{user_id}}&nbsp;&nbsp;{{user_name}}                                  <!-- Name of the submitter -->
+			</div>
+	</div><br>
+	<div class="wrap">
+			<div class="one">
+				<div class="three1">
+					
+					<span  id="teach" class="mousePoint">Teaching({{taught_count}})</span> <span style="padding-left:0.3em; color: #C0C0C0" id="submit" class="mousePoint" onclick="showSubmissions()"> Submissions ({{submitted_count}})</span>
+					
+					<!-- <span style="padding-left:13.0em" id="upv" class="mousePoint" onclick="arrangeUpvote()">&nbsp;Upvotes</span><span id="rec" class="mousePoint" style="padding-left:0.7em; color: #C0C0C0"onclick="arrangeRecent()">Recent</span> -->  <!--                 above mentionrs upvotes can be used to sort submissions on the basis of upvotes and recent --> 
+				</div>
+				<div class="three" id="clist">                    
+					&emsp;<div class="upvotes" id="upvoteVal">40
+						</div>
+					<div class="desc">Android O & Java - Mobile App Development | Beginning to End
+						<!-- (<div class="site">udemy.com</div>) -->
+						<div class="source">
+							<div class="categories">Free</div>	<div class="categories">Video</div>	<div class="categories">Beginner</div>																			
+						</div>
+					</div>
+					&emsp;<div class="upvotes" id="upvoteVal">40
+						</div>
+					<div class="desc">Android O & Java - Mobile App Development | Beginning to End
+						(<div class="site">udemy.com</div>)
+						<div class="source">
+							<div class="categories">Free</div>	<div class="categories">Video</div>	<div class="categories">Beginner</div>																			
+						</div>
+					</div>
+					
+				</div>
+				 <div class="detailed_info">
+					<h4>About</h4>
+					<div class="abt">
+						{{user_about}}
+					</div>
+				</div>                               
+			</div>
+			
+			<div class="two">
+							<h3><b>Tags</b></h3>
+							<hr>
+							<div class="tagsList">
+								{{tags}}
+							</div>
+			</div>
+	</div>
+</body>
+<script>
+		function arrangeUpvote() {
+			document.getElementById('upv').style.color = "black";
+			document.getElementById('rec').style.color = "#C0C0C0";
+		}
+		function arrangeRecent() {
+			document.getElementById('rec').style.color = "black";
+			document.getElementById('upv').style.color = "#C0C0C0";
+		}
+		function showTeaching() {
+			console.log("getting clicked");
+			document.getElementById('teach').style.color = "black";
+			document.getElementById('submit').style.color = "#C0C0C0";
+            // var word=document.getElementById('word').value;
+            var user_id={{user_id}};
+            // console.log(user_id);
+            $.ajax({
+                url:"udetails.php",
+                type:"POST",
+                data:{user_id:user_id,filter:"Teaching"},
+                cache:false,
+                success:function(resp){
+                	document.getElementById('clist').innerHTML=resp;
+                    console.log(resp);
+                }
+            });
+		}
+		function showSubmissions() {
+			document.getElementById('submit').style.color = "black";
+			document.getElementById('teach').style.color = "#C0C0C0";
+			// var word=document.getElementById('word').value;
+            var user_id={{user_id}};
+            // console.log(user_id);
+            $.ajax({
+                url:"udetails.php",
+                type:"POST",
+                data:{user_id:user_id,filter:"Submitted"},
+                cache:false,
+                success:function(resp){
+                	document.getElementById('clist').innerHTML=resp;
+                    // console.log(resp);
+                }
+            });
+		}
+		teach=document.getElementById("teach");
+		teach.onclick=function(){showTeaching()};
+		window.onload=function(){showTeaching()};
+		// console.log({{taught_count}});
+	</script>
+</html>

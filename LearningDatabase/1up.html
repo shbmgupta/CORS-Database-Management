@@ -1,0 +1,423 @@
+<html>
+<head>
+	<title>
+			{{course_title}}
+	</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+	<style>
+	body{
+		background: #f6e4e4;
+	}
+		.d1{
+			width: 100%;
+		}
+		h1{
+			font-family:'Josefin Sans', sans-serif !important;
+		}
+		h2{
+			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		}
+		hr {
+		    display: block;
+		    height: 1px;
+		    border: 0;
+		    border-top: 1px solid #add8e6;
+		    margin: 1em 0;
+		    padding: 0; 
+		}
+		.search{
+			background: white;
+			width: 100%;
+			position: fixed;
+		}
+		.search input[type=text] {
+			left: 18%;
+		  	width: 60%;
+			padding: 9px;
+			margin-top: 8px;
+			margin-right: 16px;
+			margin-left: 16px;
+			margin-bottom: 8px;
+
+			outline-color: #00506b;
+			font-size: 20px;
+		}
+    .content{
+      padding-top:20px;
+      color: white;
+      font-size: 30px;
+      text-align: left;
+      padding-bottom: 20px;
+      background-color:#00506b;
+    }
+		.wrap1{
+			background: #f6e4e4;
+			
+			margin: 0 auto;
+			padding-left: 10%;
+			padding-right: 2%;
+			padding-top: 30px;
+			width: 100%;
+		}
+		.one{
+			display: inline-block;
+			margin: 0 15px 0 0;
+			background: white;
+			vertical-align: middle;
+			width: 60%;
+		}
+		.two{
+			display: inline-block;
+			vertical-align: top;
+			border: 1px solid #add8e6;
+			padding: 20px;
+			background: #dbf3ff;
+			width: 30%;
+			font-size: 18px
+		}
+		.three1{
+			width: 100%;
+			padding: 40px;
+			padding-bottom: 20px;
+			padding-top: 20px;
+			background: white;
+			font-size: 20px;
+			border: 1px solid #ccc;
+		}
+		.mousePoint:hover{
+			cursor: pointer;
+		}
+		.three{
+			width: 100%;
+			padding: 0px;
+			border: 1px solid #ccc;
+			min-height: 70px !important;
+		}
+		.desc{
+			width:85%;
+			display: inline-block;
+			vertical-align: middle;
+			padding: 20px;
+			font-size: 20px;
+		}
+		.source{
+			height: 40px;
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.site{
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 15px;
+		}
+		.categories{
+			display: inline-block;
+			height: 25px;
+			vertical-align: middle;
+			text-align: center;
+			background: #add8e6;
+			border-radius: 25px;
+			padding-left: 10px;
+			padding-top: 2px;
+			padding-right: 10px;
+			font-size: 15px;
+		}
+		.upvotes{
+			width: 12%;
+			display: inline-block;
+			vertical-align: middle;
+			border: 1px solid #000;
+			height: 70px;
+			font-family:'Josefin Sans', sans-serif;
+			padding: 10px;
+			text-align: center;
+			font-size: 40px;
+		}
+		.ico{
+			position: relative;
+			font-size: 30px;
+			top: 2px;
+		}
+		
+		.myBox{
+            background: #3670ad;
+           border:0 none;
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            width: 100%;
+            padding: 8px;
+            border-radius: 3px;
+        }
+        .myBox:hover{
+            background: #3c7dc0;
+            text-decoration: none;
+        }
+
+
+		.wrap {
+          z-index: 5;
+          position: absolute;
+          overflow: hidden;
+          top: 10%;
+          right: 20%;
+          bottom: 15%;
+          left: 20%;
+          padding: 20px 50px;
+          display: block;
+          border-radius: 4px;
+          transform: translateX(20px);
+          transition: all 0.5s;
+          visibility: hidden;
+        }
+        .wrap .content1 {
+          z-index: 5;
+          font-family: 'Josefin Sans', sans-serif;
+          text-align: center;
+          opacity: 0;
+        }
+        .wrap:before {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          background: white;
+          content: "";
+          bottom: 90%;
+          left: 90%;
+          top: 10%;
+          color: #fff;
+          border-radius: 50%;
+          -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355,1);
+          transition: all 600ms cubic-bezier(0.215, 0.61, 0.355,1);
+        }
+        .wrap.active {
+          z-index: 5;
+          display: block;
+          visibility: visible;
+          background: white;
+          box-shadow: 2px 3px 16px silver;
+          transition: all 600ms;
+          transform: translateX(0px);
+          transition: all 0.5s;
+        }
+        .wrap.active:before {
+          z-index: -3;
+          height: 1200px;
+          width: 1500px;
+          border-radius: 50%;
+          top: 10%;
+          left: 80%;
+          margin-left: -1000px;
+          margin-top: -1000px;
+          display: block;
+          -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355,1);
+          transition: all 600ms cubic-bezier(0.215, 0.61, 0.355,1);
+        }
+        .wrap.active .content1 {
+          z-index: 0;
+          position: relative;
+          z-index: 1;
+          opacity: 1;
+          text-align: left;
+          transition: all 600ms cubic-bezier(0.55, 0.055,  0.675, 0.19);
+        }
+
+        .weel.button {
+          z-index: 5;
+          padding: 11px 11px 13px 13px;
+          outline: none;
+          border-radius: 50%;
+          background: #00506b;
+          color: #fff;
+          font-size: 24px;
+          display: block;
+          position: fixed;
+          left: 95%;
+          top: 5%;
+          margin-left: -25px;
+          transition: transform 1.25s;
+        }
+        .weel.button:hover {
+          z-index: 5;
+          text-decoration: none;
+          background: #fff;
+          color: #00506b;
+           transition: transform 0.25s;
+        }
+        .weel.button.active {
+          z-index: 5;
+          transform: rotate(135deg);
+          transition: transform 0.5s;
+        }
+        .subbtn{
+            background: #00506b;
+            font-family: 'Josefin Sans', sans-serif;
+            border:0 none;
+            width: 100%;
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 3px;
+        }
+        .subbtn:hover{
+            background: #3c7dc0;
+            text-decoration: none;
+        }
+        .hom{
+        	text-decoration: none;
+        	text-decoration-color: none;
+        	color:inherit;
+        }
+        .hom:hover{
+        	text-decoration: none;
+        	text-decoration-color: none;
+			color: inherit;
+        }
+        .test{
+        	display:inline-block;
+
+        }
+    </style>
+
+	</style>
+</head>
+<body>
+	<div class="d1">
+		<div class="search">
+			<h1 ><a class='hom' href='index.php'><div><b style="color: #00506b;"><span style="padding-left:15%">></span></b><b><u style="text-decoration: underline; text-decoration-color: #00506b; ">C</u></b>orS <input type="text" placeholder="Search for the topic you want to learn..." onkeyup="find()" id="searchbox"></div></a></h1>	
+		</div><br><br><br><br>
+		<div align="center" class="content">
+			<div style="width:80%;"><span style="padding-left:12%">{{course_title}}
+			</div>
+		</div><br>
+		<div class="wrap1">
+			<div class="one">
+				<div class="three1">
+					Top Tutorials
+          <!-- <span style="padding-left:17em" class="mousePoint" id='upv' onclick="arrangeUpvote()">&nbsp;Upvotes</span><span class="mousePoint" id='rec'style="padding-left:0.7em; color: #C0C0C0" onclick="arrangeRecent()">Recent</span> -->  
+				</div>
+				{{row}}
+
+			</div>
+			<div class="two">
+					<form action="" method="get" >
+							<h3><b>CHOOSE YOUR COURSES</b></h3>
+							<hr>
+							<h4><b>Type of course</b></h4>
+							<input type="checkbox" name="type[]" value="Free">&nbsp;Free<br>
+							<input type="checkbox" name="type[]" value="Paid"> &nbsp;Paid<br>
+							<h4><b>Level</b></h4>
+							<input type="checkbox" name="level[]" value="Beginner"> &nbsp;Beginner<br>
+							<input  type="checkbox" name="level[]" value="Intermediate"> &nbsp;Intermediate<br>
+							<input type="checkbox" name="level[]" value="Advanced"> &nbsp;Advanced<br>
+							<h4><b>Content Type</b></h4>
+							<input  type="checkbox" name="content[]" value="Video"> &nbsp;Video<br>
+							<input  type="checkbox" name="content[]" value="Book"> &nbsp;Book<br>
+							<input  type="checkbox" name="content[]" value="Only Reading"> &nbsp;Only Reading<br><br>
+							<input type="submit" name="filter" id="submitbtn" class='myBox'>
+					</form>
+			</div>
+		</div>
+	</div>
+	<div class='wrap'>
+      <div class='content1'>
+            <h2><center>Submit Tutorial</center></h2><br>
+        <form action="addTutorial.php" method="POST">
+
+            <input type="text" name="TutorialName" placeholder="&nbsp;Name of the Tutorial" style="width:600px" value='' required>
+            <br><br>
+            <input type="text" name="TutorialURL" placeholder="&nbsp;URL of the Tutorial" style="width:600px" value='' required>
+            <br><br>
+            <input type="number" name="Submitter" placeholder="&nbsp;ID of Submitter" style="width:300px" value='' onkeyup="checkSubmitter(this.value)" required>
+            <input type="number" name="TaughtBy" placeholder="&nbsp;ID of Faculty" style="width:300px" value='' onkeyup="checkTeacher(this.value)" required>
+            <div class="test">
+            	<div id="checkSubmitter" style="width:300px;display: inline-block;"></div>
+            	<div id="checkTeacher" style="width:300px;display: inline-block;"></div>
+            </div>
+
+            <!-- <span style="width: 300px; display:inline-block;">Programming language/ Framework/ Library: </span><input style="width:300px" type="text" placeholder="E.g. Python 3, Angular .."> -->
+            <input type="hidden" value="{{course_id}}" name="course_id">
+            <br><br>
+            <span style="width: 300px; display:inline-block;">Type of Course: </span><input type="radio" name="course_type" value="Free" required>&nbsp;Free &emsp;<input type="radio" name="course_type" value="Paid" required>&nbsp;Paid
+            <br><br>
+            <span style="width: 300px; display:inline-block;">Level: </span><input type="radio" name="level" value="Beginner" required>&nbsp;Beginner &emsp;<input type="radio" name="level" value="Intermediate" required>&nbsp;Intermediate &emsp;<input type="radio" name="level" value="Advanced" required>&nbsp;Advanced
+            <br><br>
+            <span style="width: 300px; display:inline-block;">Content Type: </span><input type="radio" name="content" value="Video" required>&nbsp;Video &emsp;<input type="radio" name="content" value="Book" required>&nbsp;Book &emsp;<input type="radio" name="content" value="Only Reading" required>&nbsp;Only Reading
+            <br><br><br>
+            <!-- <a href="http://google.com"><div class="myBox">
+                Submit Tutorial
+            </div></a> -->
+            <input type="submit" class='subbtn'>
+        </form>
+      </div>
+    </div>
+    <a class='button glyphicon glyphicon-plus weel' href='#'></a>
+    <!-- <script src="js/SmoothScroll.min.js"></script> -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+   <script type="text/javascript">
+   	function find(){
+    	var sbx=document.getElementById('searchbox');
+    	// console.log(sbx.value);
+    	var txt=sbx.value;
+    	$.ajax({
+            url:"search.php",
+            type:"POST",
+            data:{word:txt},
+            cache:false,
+            success:function(resp){
+                console.log(resp);
+                // document.getElementById('courses').innerHTML=resp;
+            }
+        });
+    }
+   </script>
+    <script>
+            $('.weel').on('click', function(){
+              $('.wrap, .weel').toggleClass('active');
+ 
+             return false;
+            });
+    </script>
+</body>
+<script type="text/javascript">
+	function arrangeUpvote() {
+			document.getElementById('upv').style.color = "black";
+			document.getElementById('rec').style.color = "#C0C0C0";
+		}
+		function arrangeRecent() {
+			document.getElementById('rec').style.color = "black";
+			document.getElementById('upv').style.color = "#C0C0C0";
+		}
+	function checkSubmitter(uid){
+		$.ajax({
+            url:"checkuser.php",
+            type:"POST",
+            data:{uid:uid},
+            cache:false,
+            success:function(resp){
+                // console.log(resp);
+                document.getElementById('checkSubmitter').innerHTML=resp;
+            }
+        });
+	}
+	function checkTeacher(uid){
+		$.ajax({
+            url:"checkuser.php",
+            type:"POST",
+            data:{uid:uid},
+            cache:false,
+            success:function(resp){
+                // console.log(resp);
+                document.getElementById('checkTeacher').innerHTML=resp;
+            }
+        });
+	}
+</script>
+</html>
